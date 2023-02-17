@@ -1,11 +1,15 @@
 {
   "name": "vue3-linkedin-login",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Add Login With Linkedin feature to your Vue 3 app.",
   "author": "Mustafa KUCUK <devmustafakucuk@gmail.com>",
+  "main": "dist/vue3-linkedin-login.common.js",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build-library": "vue-cli-service build --target lib --name vue3-linkedin-login ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
