@@ -1,7 +1,8 @@
 {
   "name": "vue3-linkedin-login",
   "version": "0.1.0",
-  "private": true,
+  "description": "Add Login With Linkedin feature to your Vue 3 app.",
+  "author": "Mustafa KUCUK <devmustafakucuk@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,27 +14,24 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
-    "@vue/cli-plugin-eslint": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "@vue/compiler-sfc": "^3.0.0"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mustafakucuk/vue3-linkedin-login"
   },
+  "keywords": [
+    "vue",
+    "linkedin",
+    "sign in with linkedin",
+    "linkedin identity",
+    "linkedin login",
+    "login",
+    "oauth2",
+    "lightweight",
+    "customizable"
+  ],
   "browserslist": [
     "> 1%",
     "last 2 versions",

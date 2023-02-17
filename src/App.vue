@@ -1,26 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <button @click="linkedInLogin">test</button>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { onMounted } from "vue";
+import { useLinkedIn, LinkedInCallback } from "./index";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const { linkedInLogin, exchangeCodeForToken, getAccount, getMail } =
+  useLinkedIn({
+    clientId: process.env.VUE_APP_LINKEDIN_CLIENT_ID,
+    clientSecret: process.env.VUE_APP_LINKEDIN_CLIENT_SECRET,
+    redirectUri: process.env.VUE_APP_LINKEDIN_REDIRECT_URI,
+    onSuccess: async (code) => {
+      const exchangeCode = await exchangeCodeForToken(code);
+      const account = await getAccount(exchangeCode.access_token);
+      const email = await getMail(exchangeCode.access_token);
+
+      if (!account || !email) {
+        return;
+      }
+
+      const firstName = account.localizedFirstName;
+      const lastName = account.localizedLastName;
+      const emailAddress = email.elements[0]["handle~"].emailAddress;
+
+      const user = {
+        firstName,
+        lastName,
+        emailAddress,
+      };
+
+      console.log(user);
+    },
+    scope: "r_emailaddress,r_liteprofile",
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+onMounted(() => {
+  LinkedInCallback();
+});
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
