@@ -70,3 +70,6 @@ We will trigger `linkedInLogin` by using `useLinkedIn` after click on Sign in wi
 | onError      | function | true        | -             |
 | scope        | string   | true        | r_liteprofile |
 | state        | string   | false       | -             |
+
+
+> This repo is inspired by the https://github.com/nvh95/react-linkedin-login-oauth2/ repo.
