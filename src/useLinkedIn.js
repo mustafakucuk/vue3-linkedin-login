@@ -27,7 +27,8 @@ export function useLinkedIn({
   scope = "r_emailaddress",
   state = "",
   closePopupMessage = "User closed the popup",
-  mode = "development",
+  useProxy = false,
+  proxyUrl = "https://cors-anywhere.herokuapp.com/",
 }) {
   const popupRef = ref(null);
   const popUpIntervalRef = ref(null);
@@ -87,8 +88,8 @@ export function useLinkedIn({
   };
 
   const buildUrl = (url, params) => {
-    if (mode === "development") {
-      url = "https://cors-anywhere.herokuapp.com/" + url;
+    if (useProxy) {
+      url = `${proxyUrl}${url}`;
     }
 
     params = new URLSearchParams({
