@@ -19,7 +19,7 @@ We will trigger `linkedInLogin` by using `useLinkedIn` after click on Sign in wi
 
 <script setup>
   import { onMounted } from "vue";
-  import { useLinkedIn, LinkedInCallback } from "./index";
+  import { useLinkedIn, LinkedInCallback } from "vue3-linkedin-login";
 
   const { linkedInLogin, exchangeCodeForToken, getAccount, getMail } =
     useLinkedIn({
