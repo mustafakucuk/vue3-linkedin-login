@@ -1,6 +1,6 @@
 {
   "name": "vue3-linkedin-login",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Add Login With Linkedin feature to your Vue 3 app.",
   "author": "Mustafa KUCUK <devmustafakucuk@gmail.com>",
   "main": "dist/vue3-linkedin-login.common.js",
