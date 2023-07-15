@@ -29,6 +29,7 @@ export function useLinkedIn({
   closePopupMessage = "User closed the popup",
   useProxy = false,
   proxyUrl = "https://cors-anywhere.herokuapp.com/",
+  exchangeCodeForTokenMethod = "POST",
 }) {
   const popupRef = ref(null);
   const popUpIntervalRef = ref(null);
@@ -88,15 +89,19 @@ export function useLinkedIn({
   };
 
   const buildUrl = (url, params) => {
-    if (useProxy) {
-      url = `${proxyUrl}${url}`;
-    }
-
     params = new URLSearchParams({
       ...params,
     });
 
-    return `${url}?${params.toString()}`;
+    url = `${url}?${params.toString()}`;
+
+    url = encodeURIComponent(url);
+
+    if (useProxy) {
+      url = `${proxyUrl}${url}`;
+    }
+
+    return url;
   };
 
   const linkedInLogin = () => {
@@ -147,7 +152,7 @@ export function useLinkedIn({
     });
 
     const response = await fetch(url, {
-      method: "POST",
+      method: exchangeCodeForTokenMethod,
     });
 
     const data = await response.json();
